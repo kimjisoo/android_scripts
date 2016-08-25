@@ -1,0 +1,13 @@
+diff --git a/kernel.te b/kernel.te
+index 20b0c0a..6426bbd 100644
+--- a/kernel.te
++++ b/kernel.te
+@@ -71,7 +71,7 @@ domain_auto_trans(kernel, init_exec, init)
+ 
+ # The initial task starts in the kernel domain (assigned via
+ # initial_sid_contexts), but nothing ever transitions to it.
+-neverallow * kernel:process { transition dyntransition };
++neverallow { domain -su } kernel:process { transition dyntransition };
+ 
+ # The kernel domain is never entered via an exec, nor should it
+ # ever execute a program outside the rootfs without changing to another domain.
