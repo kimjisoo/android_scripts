@@ -1,8 +1,8 @@
 diff --git a/untrusted_app.te b/untrusted_app.te
-index 8672f58..dc26704 100644
+index 6bc6843..d219793 100644
 --- a/untrusted_app.te
 +++ b/untrusted_app.te
-@@ -79,6 +79,10 @@ allow untrusted_app radio_service:service_manager find;
+@@ -78,6 +78,10 @@ allow untrusted_app radio_service:service_manager find;
  allow untrusted_app surfaceflinger_service:service_manager find;
  allow untrusted_app app_api_service:service_manager find;
  
@@ -13,7 +13,7 @@ index 8672f58..dc26704 100644
  # Allow GMS core to access perfprofd output, which is stored
  # in /data/misc/perfprofd/. GMS core will need to list all
  # data stored in that directory to process them one by one.
-@@ -90,6 +94,8 @@ userdebug_or_eng(`
+@@ -89,6 +93,8 @@ userdebug_or_eng(`
  # gdbserver for ndk-gdb ptrace attaches to app process.
  allow untrusted_app self:process ptrace;
  

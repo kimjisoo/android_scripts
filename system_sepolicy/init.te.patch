@@ -1,16 +1,16 @@
 diff --git a/init.te b/init.te
-index 1baeeee..859c2ea 100644
+index 6197c39..7f45111 100644
 --- a/init.te
 +++ b/init.te
-@@ -90,6 +90,7 @@ allow init contextmount_type:notdevfile_class_set r_file_perms;
- 
- # restorecon /adb_keys or any other rootfs files to a more specific type.
- allow init rootfs:file relabelfrom;
+@@ -95,6 +95,7 @@ allow init contextmount_type:notdevfile_class_set r_file_perms;
+ # restorecon /adb_keys or any other rootfs files and directories to a more
+ # specific type.
+ allow init rootfs:{ dir file } relabelfrom;
 +allow init su_exec:file relabelto;
  
  # mkdir, symlink, write, rm/rmdir, chown/chmod, restorecon/restorecon_recursive from init.rc files.
  # chown/chmod require open+read+setattr required for open()+fchown/fchmod().
-@@ -282,8 +283,8 @@ unix_socket_connect(init, vold, vold)
+@@ -295,8 +296,8 @@ allow init misc_block_device:blk_file w_file_perms;
  
  # The init domain is only entered via setcon from the kernel domain,
  # never via an exec-based transition.

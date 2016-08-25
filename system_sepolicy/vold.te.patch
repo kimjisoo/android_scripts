@@ -1,10 +1,10 @@
 diff --git a/vold.te b/vold.te
-index fb3673c..b281442 100644
+index 8cea0c3..dc44bbe 100644
 --- a/vold.te
 +++ b/vold.te
-@@ -188,10 +188,10 @@ allow vold toolbox_exec:file rx_file_perms;
- # Prepare profile dir for users.
- allow vold user_profile_data_file:dir create_dir_perms;
+@@ -195,10 +195,10 @@ allow vold user_profile_foreign_dex_data_file:dir { getattr setattr };
+ # Raw writes to misc block device
+ allow vold misc_block_device:blk_file w_file_perms;
  
 -neverallow { domain -vold } vold_data_file:dir ~{ open create read getattr setattr search relabelto ioctl };
 -neverallow { domain -vold } vold_data_file:notdevfile_class_set ~{ relabelto getattr };
@@ -18,3 +18,6 @@ index fb3673c..b281442 100644
 +neverallow { domain -vold -init -su } restorecon_prop:property_service set;
  
  neverallow vold fsck_exec:file execute_no_trans;
+-- 
+2.7.4
+

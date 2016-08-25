@@ -1,8 +1,8 @@
 diff --git a/device.te b/device.te
-index 0fc90c5..6a83853 100644
+index 06006b2..8bc6919 100644
 --- a/device.te
 +++ b/device.te
-@@ -34,6 +34,7 @@ type random_device, dev_type, mlstrustedobject;
+@@ -35,6 +35,7 @@ type random_device, dev_type, mlstrustedobject;
  type sensors_device, dev_type;
  type serial_device, dev_type;
  type socket_device, dev_type;

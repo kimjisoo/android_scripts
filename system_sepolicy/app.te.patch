@@ -1,8 +1,8 @@
 diff --git a/app.te b/app.te
-index 5ba0e74..3846cc3 100644
+index f2adf37..e76662b 100644
 --- a/app.te
 +++ b/app.te
-@@ -257,14 +257,14 @@ allow appdomain cache_file:dir getattr;
+@@ -274,14 +274,14 @@ allow appdomain cache_file:dir getattr;
  
  # Superuser capabilities.
  # bluetooth requires net_admin and wake_alarm.
@@ -19,9 +19,9 @@ index 5ba0e74..3846cc3 100644
 -neverallow appdomain {
 +neverallow { appdomain -su } {
      audio_device
-     video_device
+     camera_device
      dm_device
-@@ -276,14 +276,14 @@ neverallow appdomain {
+@@ -294,14 +294,14 @@ neverallow appdomain {
  # Note: Try expanding list of app domains in the future.
  neverallow { untrusted_app isolated_app shell } graphics_device:chr_file { read write };
  
@@ -40,7 +40,7 @@ index 5ba0e74..3846cc3 100644
      domain:{
          netlink_firewall_socket
          netlink_tcpdiag_socket
-@@ -297,29 +297,29 @@ neverallow appdomain
+@@ -315,29 +315,29 @@ neverallow appdomain
  # These messages are broadcast messages from the kernel to userspace.
  # Do not allow the writing of netlink messages, which has been a source
  # of rooting vulns in the past.
@@ -80,7 +80,7 @@ index 5ba0e74..3846cc3 100644
      { sigkill sigstop signal };
  
  # Transition to a non-app domain.
-@@ -329,87 +329,87 @@ neverallow { appdomain -shell userdebug_or_eng(`-su') } { domain -appdomain }:pr
+@@ -347,87 +347,87 @@ neverallow { appdomain -shell userdebug_or_eng(`-su') } { domain -appdomain }:pr
      { transition dyntransition };
  
  # Write to rootfs.

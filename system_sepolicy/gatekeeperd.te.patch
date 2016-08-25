@@ -1,10 +1,10 @@
 diff --git a/gatekeeperd.te b/gatekeeperd.te
-index 051daca..a5851c9 100644
+index e394af3..51dbb44 100644
 --- a/gatekeeperd.te
 +++ b/gatekeeperd.te
 @@ -27,4 +27,4 @@ allow gatekeeperd gatekeeper_data_file:file create_file_perms;
  # For hardware properties retrieval
- allow gatekeeperd hardwareproperties_service:service_manager find;
+ allow gatekeeperd hardware_properties_service:service_manager find;
  
 -neverallow { domain -gatekeeperd } gatekeeper_service:service_manager add;
 +neverallow { domain -su -gatekeeperd } gatekeeper_service:service_manager add;
